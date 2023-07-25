@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    :root {
+      --clr: rgba(0, 0, 0, 1);
+      --clr1: rgba(0, 0, 0, 1);
+    }
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      transition: background-color 1s ease, color 1s ease;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      font-size: 36px;
+      color: white; /* Set initial text color */
+    }
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+  <script>
+    const bck = document.querySelector(".container");
+
+    // Array of random full-screen texts
+    const fullScreenTexts = [
+      "Hello, World!",
+      "Welcome to the Glassmorphism Effect!",
+      "Keep Calm and Code On!",
+      "Embrace the Beauty of Glassmorphism!",
+      "Feel the Magic of CSS!",
+      "Explore the Wonders of Web Development!",
+      "Dream Big, Code Bigger!",
+      "Stay Curious and Keep Learning!",
+    ];
+
+    const randomColor = () => {
+      // Generate random values for each color component (Red, Green, Blue)
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      return `rgba(${r}, ${g}, ${b}, 1)`;
+    };
+
+    const paint = () => {
+      clr = randomColor();
+      clr1 = randomColor();
+      document.documentElement.style.setProperty('--clr', clr + '1)');
+      document.documentElement.style.setProperty('--clr1', clr1 + '1)');
+
+      // Display a random full-screen text in the container
+      const randomText = fullScreenTexts[Math.floor(Math.random() * fullScreenTexts.length)];
+      bck.textContent = randomText;
+
+      // Update the body's background color with a new random color
+      const bodyColor = randomColor();
+      document.body.style.backgroundColor = bodyColor;
+
+      // Update the text color with a new random color
+      const textColor = randomColor();
+      bck.style.color = textColor;
+    };
+
+    setInterval(paint, 100);
+  </script>
+</body>
+</html>
